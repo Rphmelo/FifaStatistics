@@ -1,5 +1,5 @@
 //Pacote
-package br.com.melo.beans;
+package beans;
 
 //Classes importadas
 import java.io.Serializable;
@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author Melo
  *
  */
-public class Pais implements Serializable {
+public class Liga implements Serializable {
 
 	/**
 	 * Atributos
@@ -18,12 +18,12 @@ public class Pais implements Serializable {
 	private String nome;
 	
 	//Método construtor vazio
-	public Pais() {
+	public Liga() {
 		super();
 	}
 	
 	//Método construtor cheio
-	public Pais(int codigo, String nome) {
+	public Liga(int codigo, String nome) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;

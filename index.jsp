@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="resources/imports/bootstrap/css-bootstrap.jsp"%>
 <%@ include file="resources/imports/jstl/jstl.jsp"%>
-<c:import url="resources/imports/bootstrap/js-bootstrap.jsp"></c:import>
+
 <title>Home</title>
 </head>
 <body>
@@ -40,9 +40,25 @@
 	</div>
 	<!-- End container -->
 
-
-
-
+<c:import url="resources/imports/bootstrap/js-bootstrap.jsp"></c:import>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

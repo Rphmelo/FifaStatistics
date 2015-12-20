@@ -3,7 +3,7 @@
 <link  rel="stylesheet" href="resources/css/style.css"/>
 <style>
 body{
-	background-color: #4682B4;
-	color: #ffffff;
+	background-color: #ffffff;
+	color: #000000;
 }
 </style>

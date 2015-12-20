@@ -1,5 +1,5 @@
 //Pacote
-package br.com.melo.beans;
+package beans;
 
 //Classes importadas
 import java.io.Serializable;

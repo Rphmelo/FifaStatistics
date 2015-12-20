@@ -1,5 +1,5 @@
 //Pacote
-package br.com.melo.beans;
+package beans;
 
 //Classes importadas
 import java.io.Serializable;
@@ -16,7 +16,7 @@ public class Time implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int codigo;
 	private String nome;
-	private Pais pais;
+	private Liga liga;
 	
 	//Método construtor vazio
 	public Time() {
@@ -24,11 +24,11 @@ public class Time implements Serializable {
 	}
 
 	//Método construtor cheio
-	public Time(int codigo, String nome, Pais pais) {
+	public Time(int codigo, String nome, Liga liga) {
 		super();
 		this.codigo = codigo;
 		this.nome = nome;
-		this.pais = pais;
+		this.liga = liga;
 	}
 
 	//Métodos getters
@@ -41,8 +41,8 @@ public class Time implements Serializable {
 	public String getNome() {
 		return nome;
 	}
-	public Pais getPais() {
-		return pais;
+	public Liga getLiga() {
+		return liga;
 	}
 	
 	//Métodos setters
@@ -52,8 +52,8 @@ public class Time implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public void setPais(Pais pais) {
-		this.pais = pais;
+	public void setLiga(Liga liga) {
+		this.liga = liga;
 	}
 	
 	

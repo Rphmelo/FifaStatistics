@@ -1,5 +1,5 @@
 //Pacote
-package br.com.melo.beans;
+package beans;
 
 //Classes importadas
 import java.io.Serializable;
@@ -23,7 +23,7 @@ public class Estatistica implements Serializable{
 	private byte finalizacaoCerta;
 	private byte faltasCometidas;
 	private byte precisaoPasse;
-	private char resultado;
+	private String resultado;
 	
 	//Método construtor vazio
 	public Estatistica() {
@@ -33,7 +33,7 @@ public class Estatistica implements Serializable{
 	//Método construtor cheio
 	public Estatistica(int codigo, Jogador jogador, Time time, byte gols,
 			byte posseDeBola, byte finalizacao, byte finalizacaoCerta,
-			byte faltasCometidas, byte precisaoPasse, char resultado) {
+			byte faltasCometidas, byte precisaoPasse, String resultado) {
 		super();
 		this.codigo = codigo;
 		this.jogador = jogador;
@@ -79,7 +79,7 @@ public class Estatistica implements Serializable{
 	public byte getPrecisaoPasse() {
 		return precisaoPasse;
 	}
-	public char getResultado() {
+	public String getResultado() {
 		return resultado;
 	}
 	
@@ -111,8 +111,16 @@ public class Estatistica implements Serializable{
 	public void setPrecisaoPasse(byte precisaoPasse) {
 		this.precisaoPasse = precisaoPasse;
 	}
-	public void setResultado(char resultado) {
-		this.resultado = resultado;
+	public void setResultado(char res) {
+		if(String.valueOf(res).equals("V")){
+			this.resultado = "Vitória";
+		}
+		else if(String.valueOf(res).equals("D")){
+			this.resultado = "Derrota";
+		}
+		else if(String.valueOf(res).equals("E")){
+			this.resultado = "Empate";
+		}
 	}
 	
 	
