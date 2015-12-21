@@ -15,7 +15,7 @@ public class Tipo_Partida implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	private int codigo;
-	private String descricao;
+	private String nome;
 	
 	//Método construtor vazio
 	public Tipo_Partida() {
@@ -23,10 +23,10 @@ public class Tipo_Partida implements Serializable{
 	}
 	
 	//Método construtor cheio
-	public Tipo_Partida(int codigo, String descricao) {
+	public Tipo_Partida(int codigo, String nome) {
 		super();
 		this.codigo = codigo;
-		this.descricao = descricao;
+		this.nome = nome;
 	}
 	
 	//Métodos getters
@@ -36,16 +36,16 @@ public class Tipo_Partida implements Serializable{
 	public int getCodigo() {
 		return codigo;
 	}
-	public String getDescricao() {
-		return descricao;
+	public String getNome() {
+		return nome;
 	}
 	
 	//Métodos setters
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	
