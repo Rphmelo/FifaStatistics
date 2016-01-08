@@ -5,7 +5,7 @@ package beans;
 import java.io.Serializable;
 
 /**
- * @author Melo
+ * @autor Raphael de Melo
  *
  */
 public class Casa implements Serializable{

@@ -6,9 +6,6 @@ body{
 	background-color: #ffffff;
 	color: #000000;
 }
-.teste{
-vertical-align: top;
-}
 hr {
 border: 1px solid;
 border-color: #3e79c7;

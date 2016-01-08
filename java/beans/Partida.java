@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @author Melo
+ * @author Raphael de Melo
  *
  */
 public class Partida implements Serializable{

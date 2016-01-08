@@ -3,7 +3,7 @@
 		role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header nav-custom-margin nav-custom-padding">
-				<a class="navbar-brand" href="#"><img height="50px" width="110%"
+				<a class="navbar-brand" href="index.jsp"><img height="50px" width="110%"
 					src="resources/images/logo.jpg" /></a>
 			</div>
 			<div>
@@ -19,14 +19,14 @@
 							<li><a href="#">Tipo de Partida</a></li>
 						</ul></li>
 					<li role="presentation" class="dropdown"><a
-						class="dropdown-toggle" data-toggle="dropdown" href="#"><b>Consultas</b>
+						class="dropdown-toggle" data-toggle="dropdown"><b>Consultas</b>
 							<span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Jogadores</a></li>
-							<li><a href="#">Ligas</a></li>
-							<li><a href="#">Partidas</a></li>
-							<li><a href="#">Times</a></li>
-							<li><a href="#">Tipos de Partida</a></li>
+							<li><a href="ServletFifa?fork=jogador&numberList=2">Jogadores</a></li>
+							<li><a href="ServletFifa?fork=ligas&numberList=2">Ligas</a></li>
+							<li><a href="ServletFifa?fork=partida&numberList=1">Partidas</a></li>
+							<li><a href="ServletFifa?fork=time&numberList=2">Times</a></li>
+							<li><a href="ServletFifa?fork=tppartida&numberList=2">Tipos de Partida</a></li>
 						</ul></li>
 					<li role="presentation"><a href="#"><b>Médias</b></a></li>
 				</ul>
@@ -35,8 +35,3 @@
 		</div>
 	</div>
 </nav>
-
-
-
-
-

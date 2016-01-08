@@ -5,7 +5,7 @@ package beans;
 import java.io.Serializable;
 
 /**
- * @author Melo
+ * @author Raphael de Melo
  *
  */
 public class Tipo_Partida implements Serializable{
