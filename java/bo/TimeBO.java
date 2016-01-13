@@ -11,32 +11,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Jogador;
-import dao.JogadorDAO;
+import beans.Time;
+import dao.TimeDAO;
 import excecao.Excecao;
 
 /**
  * @author Raphael de Melo
  *
  */
-public abstract class JogadorBO {
+public abstract class TimeBO {
 
 	// Objeto DAO
-	public static JogadorDAO jogadorDAO = new JogadorDAO();
+	public static TimeDAO timeDAO = new TimeDAO();
 
-	//Método que lista os jogadores
-	public static List<Jogador> listar(Connection con,
-			HttpServletRequest request, HttpServletResponse response)
-			throws Excecao, SQLException {
+	// Método que lista os times
+	public static List<Time> listar(Connection con, HttpServletRequest request,
+			HttpServletResponse response) throws SQLException, Excecao {
 		if(con == null){
 			Excecao.database(request, response);
 			throw new Excecao();
 		}
-		List<Jogador> playerList = jogadorDAO.listar(con);
-		if(playerList == null){
+		List<Time> teamList = timeDAO.listar(con);
+		if(teamList == null){
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}
-		return playerList;	
+		return teamList;	
 	}
 
 }

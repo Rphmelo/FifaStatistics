@@ -23,9 +23,9 @@
 							<span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="ServletFifa?fork=jogador&numberList=2">Jogadores</a></li>
-							<li><a href="ServletFifa?fork=ligas&numberList=2">Ligas</a></li>
+							<li><a href="ServletFifa?fork=liga&numberList=2">Ligas</a></li>
 							<li><a href="ServletFifa?fork=partida&numberList=1">Partidas</a></li>
-							<li><a href="ServletFifa?fork=time&numberList=2">Times</a></li>
+							<li><a href="ServletFifa?fork=time&numberList=3">Times</a></li>
 							<li><a href="ServletFifa?fork=tppartida&numberList=2">Tipos de Partida</a></li>
 						</ul></li>
 					<li role="presentation"><a href="#"><b>Médias</b></a></li>

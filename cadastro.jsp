@@ -14,7 +14,7 @@
 	<div class="container">
 		<!-- Menu -->
 		<c:import url="resources/imports/menu/menu.jsp"></c:import>
-		<c:if test="${partida-msg} == 1">
+		<c:if test="${partida-msg == 1}">
 			<!-- Init Messages -->
 			<!-- Init row -->
 			<div class="row">
@@ -30,7 +30,7 @@
 			<!-- End row -->
 		</c:if>
 
-		<c:if test="${partida-msg} == 2">
+		<c:if test="${partida-msg == 2}">
 			<!-- Init row -->
 			<div class="row">
 				<div class="col-sm-2 col-xs-2 col-md-2"></div>
@@ -314,12 +314,11 @@
 							name="nm-liga" required>
 							<option value="">Selecione</option>
 						</select>
-						<p class="help-block">Selecione o liga</p>
+						<p class="help-block">Selecione a liga</p>
 					</div>
 				</div>
 				<div class="col-sm-4 col-xs-4 col-md-4"></div>
 			</div>
-
 			<!-- Init row -->
 			<div class="row">
 				<div class="col-sm-5 col-xs-5 col-md-5"></div>
@@ -334,11 +333,8 @@
 			<!-- End row -->
 		</form>
 		<!-- End other's form -->
-
-
 	</div>
 	<!-- End Container -->
-
 	<c:import url="resources/imports/bootstrap/js-bootstrap.jsp"></c:import>
 </body>
 </html>

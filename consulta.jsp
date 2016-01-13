@@ -401,9 +401,6 @@
 									<tr class="info">
 										<th>Código</th>
 										<th>Nome</th>
-										<c:if test="${tipoLista} == 'Times'">
-											<th>${lista.liga.nome}</th>
-										</c:if>
 									</tr>
 								</thead>
 								<c:forEach var="lista" items="${listaOutros}">
@@ -411,9 +408,6 @@
 										<tr class="success text-left">
 											<td>${lista.codigo}</td>
 											<td>${lista.nome}</td>
-											<c:if test="${tipoLista} == 'Times'">
-											<td>${lista.liga.nome}</td>
-											</c:if>
 										</tr>
 									</tbody>
 								</c:forEach>
@@ -423,6 +417,38 @@
 					</div>
 				</div>
 				<!-- End Players/Leagues/Matches-type list -->
+			</c:if>
+			
+			<c:if test="${numberList == 3}">
+			<!-- Init Teams list -->
+				<h3>${tipoLista}</h3>
+				<div class="row">
+					<div class="col-sm-5 col-xs-5 col-md-5">
+						<div class="table-hover table-responsive">
+							<!-- Init table -->
+							<table class="table table-bordered table-hover">
+								<thead>
+									<tr class="info">
+										<th>Código</th>
+										<th>Nome</th>
+										<th>Liga</th>
+									</tr>
+								</thead>
+								<c:forEach var="lista" items="${listaTime}">
+									<tbody>
+										<tr class="success text-left">
+											<td>${lista.codigo}</td>
+											<td>${lista.nome}</td>		
+											<td>${lista.liga.nome}</td>
+										</tr>
+									</tbody>
+								</c:forEach>
+							</table>
+							<!-- End Table -->
+						</div>
+					</div>
+				</div>
+				<!-- End Teams list -->
 			</c:if>
 	</div>
 	<!-- End container -->

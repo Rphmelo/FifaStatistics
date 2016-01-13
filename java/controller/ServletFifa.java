@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import conexao.ConexaoFactory;
-import dao.JogadorDAO;
 import beans.Jogador;
+import beans.Time;
 import bo.JogadorBO;
+import bo.TimeBO;
 import excecao.Excecao;
 
 /**
@@ -29,14 +30,14 @@ public class ServletFifa extends HttpServlet {
      */
     public ServletFifa() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-    public void consultarJogador(Connection con,
+    //Método que envia lista de jogadores para a pagina JSP
+    public void listarJogador(Connection con,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Excecao, SQLException, ServletException, IOException {
     	//Chamando o método BO
-    	List<Jogador> playerList = JogadorBO.consultar(con, request, response); 
+    	List<Jogador> playerList = JogadorBO.listar(con, request, response); 
     	int numberList = Integer.parseInt(request.getParameter("numberList"));
     	//Atributos que serão manipulados pela EL na página JSP
     	request.setAttribute("listaOutros", playerList);
@@ -44,6 +45,21 @@ public class ServletFifa extends HttpServlet {
     	request.setAttribute("numberList", numberList);
     	request.getRequestDispatcher("consulta.jsp").forward(request, response);
     }
+    
+    //Método que envia lista de times para a pagina JSP
+    public void listarTime(Connection con,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Excecao, SQLException, ServletException, IOException {
+    	//Chamando o método BO
+    	List<Time> teamList = TimeBO.listar(con, request, response); 
+    	int numberList = Integer.parseInt(request.getParameter("numberList"));
+    	//Atributos que serão manipulados pela EL na página JSP
+    	request.setAttribute("listaTime", teamList);
+    	request.setAttribute("tipoLista", "Times");
+    	request.setAttribute("numberList", numberList);
+    	request.getRequestDispatcher("consulta.jsp").forward(request, response);
+    }
+    
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -51,12 +67,23 @@ public class ServletFifa extends HttpServlet {
 		String fork = request.getParameter("fork");
 		Connection con = null;
 		String usuario, senha;
-		usuario = "blablabla";
-		senha = "blablabla";
+		usuario = "blabla";
+		senha = "blabla";
+		try {
+			con = ConexaoFactory.controlarInstancia().getConexao(usuario, senha);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		if(fork.equals("jogador")){
 			try {
-				this.consultarJogador(con, request, response);
+				this.listarJogador(con, request, response);
+			} catch (Excecao | SQLException e) {
+				e.printStackTrace();
+			}
+		}else if(fork.equals("time")){
+			try {
+				this.listarTime(con, request, response);
 			} catch (Excecao | SQLException e) {
 				e.printStackTrace();
 			}
@@ -67,7 +94,7 @@ public class ServletFifa extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 	}
 
 }

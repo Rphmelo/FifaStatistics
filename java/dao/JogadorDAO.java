@@ -15,16 +15,18 @@ import beans.Jogador;
 import excecao.Excecao;
 
 /**
- * @author Melo
+ * @author Raphael de Melo
  *
  */
 public class JogadorDAO {
 	
+	//Variaveis auxiliares
 	PreparedStatement smt = null;
 	ResultSet result = null;
 	String sql = null;
 	
-	public List<Jogador> consultar(Connection con) throws SQLException{
+	//Método que lista os jogadores
+	public List<Jogador> listar(Connection con) throws SQLException{
 		//Variavel auxiliar
 		List<Jogador> playerList = new ArrayList<Jogador>();
 		Jogador jog;
