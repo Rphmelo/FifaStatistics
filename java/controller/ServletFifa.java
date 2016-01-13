@@ -70,21 +70,19 @@ public class ServletFifa extends HttpServlet {
 		usuario = "blabla";
 		senha = "blabla";
 		try {
-			con = ConexaoFactory.controlarInstancia().getConexao(usuario, senha);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		if(fork.equals("jogador")){
-			try {
+			con = ConexaoFactory.controlarInstancia()
+					.getConexao(usuario, senha);
+			if (fork.equals("jogador")) {
 				this.listarJogador(con, request, response);
-			} catch (Excecao | SQLException e) {
-				e.printStackTrace();
-			}
-		}else if(fork.equals("time")){
-			try {
+			} else if (fork.equals("time")) {
 				this.listarTime(con, request, response);
-			} catch (Excecao | SQLException e) {
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try{
+				con.close();
+			}catch(SQLException e){
 				e.printStackTrace();
 			}
 		}

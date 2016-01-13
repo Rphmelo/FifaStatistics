@@ -49,6 +49,9 @@ public class TimeDAO {
 			time.setLiga(liga);
 			teamList.add(time);
 		}
+		//Fechando estrutura e resultado
+		result.close();
+		smt.close();
 		return teamList;
 	}
 

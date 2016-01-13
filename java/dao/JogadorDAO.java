@@ -41,6 +41,9 @@ public class JogadorDAO {
 			jog.setNome(result.getString("nm_jogador"));
 			playerList.add(jog);
 		}
+		//Fechando estrutura e resultado
+		result.close();
+		smt.close();
 		return playerList;
 	}
 
