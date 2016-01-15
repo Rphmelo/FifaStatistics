@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,10 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Jogador;
 import beans.Liga;
+import beans.Partida;
 import beans.Time;
+import beans.Tipo_Partida;
 import bo.JogadorBO;
 import bo.LigaBO;
+import bo.PartidaBO;
 import bo.TimeBO;
+import bo.Tipo_PartidaBO;
 import conexao.ConexaoFactory;
 import excecao.Excecao;
 
@@ -76,6 +81,36 @@ public class ServletFifa extends HttpServlet {
 		request.getRequestDispatcher("consulta.jsp").forward(request, response);
 	}
 
+	// Método que envia lista de tipos de partida para a pagina JSP
+	public void listarTpPartida(Connection con, HttpServletRequest request,
+			HttpServletResponse response) throws Excecao, SQLException,
+			ServletException, IOException {
+		// Chamando o método BO
+		List<Tipo_Partida> matchTypeList = Tipo_PartidaBO.listar(con, request,
+				response);
+		int numberList = Integer.parseInt(request.getParameter("numberList"));
+		// Atributos que serão manipulados pela EL na página JSP
+		request.setAttribute("listaOutros", matchTypeList);
+		request.setAttribute("tipoLista", "Tipo de partida");
+		request.setAttribute("numberList", numberList);
+		request.getRequestDispatcher("consulta.jsp").forward(request, response);
+	}
+
+	// Método que envia lista de partidas para a pagina JSP
+	public void listarPartida(Connection con, HttpServletRequest request,
+			HttpServletResponse response) throws Excecao, SQLException,
+			ServletException, IOException {
+		// Chamando o método BO
+		List<Partida> matchList = PartidaBO.listar(con, request,
+				response);
+		// Atributos que serão manipulados pela EL na página JSP
+		int numberList = Integer.parseInt(request.getParameter("numberList"));
+		request.setAttribute("listaPartida", matchList);
+		request.setAttribute("tipoLista", "Partidas");
+		request.setAttribute("numberList", numberList);
+		request.getRequestDispatcher("consulta.jsp").forward(request, response);
+	}
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -94,8 +129,12 @@ public class ServletFifa extends HttpServlet {
 				this.listarJogador(con, request, response);
 			} else if (fork.equals("time")) {
 				this.listarTime(con, request, response);
-			}else if (fork.equals("liga")) {
+			} else if (fork.equals("liga")) {
 				this.listarLiga(con, request, response);
+			} else if (fork.equals("tppartida")) {
+				this.listarTpPartida(con, request, response);
+			}else if (fork.equals("partida")) {
+				this.listarPartida(con, request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -10,31 +10,31 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Liga;
-import dao.LigaDAO;
+import beans.Tipo_Partida;
+import dao.Tipo_PartidaDAO;
 import excecao.Excecao;
 
 /**
  * @author Raphael de Melo
  *
  */
-public abstract class LigaBO {
-
+public abstract class Tipo_PartidaBO {
+	
 	// Objeto DAO
-	public static LigaDAO ligaDAO = new LigaDAO();
+	public static Tipo_PartidaDAO tipo_PartidaDAO = new Tipo_PartidaDAO();
 
-	//Método que lista as ligas
-	public static List<Liga> listar(Connection con, HttpServletRequest request,
+	// Método que lista os tipos de partida
+	public static List<Tipo_Partida> listar(Connection con, HttpServletRequest request,
 			HttpServletResponse response) throws Excecao, SQLException {
-		if(con == null){
+		if (con == null) {
 			Excecao.database(request, response);
 			throw new Excecao();
 		}
-		List<Liga> leagueList = ligaDAO.listar(con);
-		if(leagueList == null){
+		List<Tipo_Partida> matchTypeList = tipo_PartidaDAO.listar(con);
+		if (matchTypeList == null) {
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}
-		return leagueList;
+		return matchTypeList;
 	}
 }

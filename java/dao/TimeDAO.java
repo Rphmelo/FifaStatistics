@@ -31,8 +31,7 @@ public class TimeDAO {
 		Time time = null;
 		Liga liga = null;
 		//Script sql
-		sql = "SELECT T.nm_time AS " + "Nome_Time" + ", T.cd_time AS " + "Cod_Time" 
-				+ ", L.nm_liga AS " + "Nome_Liga" + ", L.cd_liga AS " + "Cod_Liga" + " "
+		sql = "SELECT T.nm_time , T.cd_time AS, L.nm_liga AS , L.cd_liga AS " 
 				+ "FROM T_FIFA_TIME T JOIN T_FIFA_LIGA L ON L.cd_liga ="
 				+ " T.cd_liga ORDER BY T.nm_time ASC";
 		//Preparando estrutura
@@ -42,10 +41,10 @@ public class TimeDAO {
 		while(result.next()){
 			time = new Time();
 			liga = new Liga();
-			liga.setCodigo(result.getInt("Cod_Liga"));
-			liga.setNome(result.getString("Nome_Liga"));
-			time.setCodigo(result.getInt("Cod_Time"));
-			time.setNome(result.getString("Nome_Time"));
+			liga.setCodigo(result.getInt("L.cd_liga"));
+			liga.setNome(result.getString("L.nm_liga"));
+			time.setCodigo(result.getInt("T.cd_time"));
+			time.setNome(result.getString("T.nm_time"));
 			time.setLiga(liga);
 			teamList.add(time);
 		}

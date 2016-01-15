@@ -18,11 +18,12 @@ import beans.Liga;
  */
 public class LigaDAO {
 
+	//Variaveis auxiliares
 	PreparedStatement smt = null;
 	ResultSet result = null;
 	String sql = null;
 
-	// Método que retorna uma lista de objetyo Liga
+	//Método que lista as ligas
 	public List<Liga> listar(Connection con) throws SQLException {
 		// Variaveis auxiliares
 		List<Liga> leagueList = new ArrayList<Liga>();
