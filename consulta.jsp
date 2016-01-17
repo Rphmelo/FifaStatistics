@@ -22,29 +22,34 @@
 				<div class="col-sm-5 col-xs-5 col-md-5"></div>
 				<div class="col-sm-2 col-xs-2 col-md-2">
 					<h1 class="text-success text-center">
-						<u><i>Partidas</i></u>
+						<i>Partidas</i>
 					</h1>
 				</div>
 				<div class="col-sm-5 col-xs-5 col-md-5"></div>
 			</div>
 			<!-- End row -->
-			<%int i = 1; %>
-			<c:forEach var="partida" items="${listaPartida}">	
-				<hr />
-				<!-- Init row -->
-				<div class="row-fluid">
-					<div class="col-sm-5 text-info">
-						<h3 class="text-center text-capitalize">${partida.casa.estatistica.jogador.nome}</h3>
-					</div>
-					<div class="col-sm-2">
-						<h3 class="text-center text-capitalize">${partida.casa.estatistica.gols}
-							X ${partida.visitante.estatistica.gols}</h3>
-					</div>
-					<div class="col-sm-5 center text-info">
-						<h3 class="text-center text-capitalize">${partida.visitante.estatistica.jogador.nome}</h3>
-					</div>
-				</div>
-				<!-- End row -->
+			<br/>
+			<%
+				int i = 1;
+			%>
+			<c:forEach var="partida" items="${listaPartida}">
+
+				<!-- Init table -->
+				<table class="table table-bordered table-hover">
+					<tbody>
+						<tr class="text-info success text-center">
+							<td width="10%"><h3 class="text-capitalize text-center">
+									${partida.codigo}</h3></td>
+							<td width="31%"><h3 class="text-capitalize text-center">
+									${partida.casa.estatistica.jogador.nome}</h3></td>
+							<td width="18%"><h3 class="text-capitalize text-center">${partida.casa.estatistica.gols}
+									X ${partida.visitante.estatistica.gols}</h3></td>
+							<td width="41%"><h3 class="text-capitalize text-center">
+									${partida.visitante.estatistica.jogador.nome}</h3></td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- End Table -->
 
 				<!-- Init Accordion -->
 				<div class="accordion" id="accordion<%=i%>">
@@ -56,7 +61,7 @@
 							<div class="row">
 								<div class="col-sm-5 col-xs-5 col-md-5"></div>
 								<div class="col-sm-2 col-xs-2 col-md-2 text-center">
-									<button class="accordion-toggle" data-toggle="collapse"
+									<button class=" btn btn-primary accordion-toggle" data-toggle="collapse"
 										data-parent="#accordion<%=i%>" href="#collapse<%=i%>">Estatísticas</button>
 								</div>
 								<div class="col-sm-5 col-xs-5 col-md-5"></div>
@@ -68,23 +73,23 @@
 						<!-- Init Accordion-Body -->
 						<div id="collapse<%=i%>" class="accordion-body collapse row">
 							<!-- Init row-fluid -->
-							
-								<div class="col-sm-5 col-xs-5 col-md-5">
-									<h4 class="text-center">
-										Time: <i class="text-success text-capitalize">${partida.casa.estatistica.time.nome}</i>
-									</h4>
-								</div>
-								<div class="col-sm-2 col-xs-2 col-md-2">
-									<h4 class="text-center text-primary text-capitalize">
-										<i>${partida.tipo_partida.nome}</i>
-									</h4>
-								</div>
-								<div class="col-sm-5 col-xs-5 col-md-5">
-									<h4 class="text-center">
-										Time: <i class="text-success text-capitalize">${partida.visitante.estatistica.time.nome}</i>
-									</h4>
-								</div>
-							
+
+							<div class="col-sm-5 col-xs-5 col-md-5">
+								<h4 class="text-center">
+									Time: <i class="text-success text-capitalize">${partida.casa.estatistica.time.nome}</i>
+								</h4>
+							</div>
+							<div class="col-sm-2 col-xs-2 col-md-2">
+								<h4 class="text-center text-primary text-capitalize">
+									<i>${partida.tipo_partida.nome}</i>
+								</h4>
+							</div>
+							<div class="col-sm-5 col-xs-5 col-md-5">
+								<h4 class="text-center">
+									Time: <i class="text-success text-capitalize">${partida.visitante.estatistica.time.nome}</i>
+								</h4>
+							</div>
+
 							<!-- End row-fluid -->
 							<!-- Init row-fluid -->
 							<div class="row-fluid">
@@ -114,7 +119,7 @@
 										<!-- End Table -->
 									</div>
 								</div>
-								
+
 								<div class="col-sm-6 col-xs-6 col-md-6">
 									<div class="table-hover table-responsive">
 										<!-- Init table -->
@@ -150,9 +155,11 @@
 				</div>
 				<!-- End Accordion -->
 				<hr />
-				
+
 				<!-- End Matches list -->
-				<%i++; %>
+				<%
+					i++;
+				%>
 			</c:forEach>
 		</c:if>
 		<c:if test="${numberList == 2}">
