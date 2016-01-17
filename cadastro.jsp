@@ -45,26 +45,22 @@
 			<!-- End row -->
 		</c:if>
 		<!-- End Messages -->
-
+		<h2 class="text-center text-primary">Partidas</h2>
+		<br />
+		<!-- Init row -->
+		<div class="row">
+			<div class="col-sm-2 col-xs-2 col-md-2"></div>
+			<div class="col-sm-8 col-xs-8 col-md-8">
+				<h3 class="text-center text-success">
+					<i>Insira os dados abaixo:</i>
+				</h3>
+				<br />
+			</div>
+			<div class="col-sm-2 col-xs-2 col-md-2"></div>
+		</div>
+		<!-- End row -->
 		<!-- Init Matche's form -->
 		<form class="form" role="form" action="" method="post">
-			<h2 class="text-center text-primary">
-				<u>Partidas</u>
-			</h2>
-			<br />
-			<!-- Init row -->
-			<div class="row">
-				<div class="col-sm-2 col-xs-2 col-md-2"></div>
-				<div class="col-sm-8 col-xs-8 col-md-8">
-					<h3 class="text-center text-success">
-						<i>Insira os dados abaixo:</i>
-					</h3>
-					<br />
-				</div>
-				<div class="col-sm-2 col-xs-2 col-md-2"></div>
-			</div>
-			<!-- End row -->
-
 			<!-- Init row -->
 			<div class="row">
 				<div class="col-sm-4 col-xs-4 col-md-4"></div>
@@ -309,9 +305,8 @@
 						<p class="help-block">Digite o nome do time</p>
 					</div>
 					<div class="form-group">
-						<label class="control-label" for="id-liga">Liga:</label>
-						<select class="form-control" id="id-liga"
-							name="nm-liga" required>
+						<label class="control-label" for="id-liga">Liga:</label> <select
+							class="form-control" id="id-liga" name="nm-liga" required>
 							<option value="">Selecione</option>
 						</select>
 						<p class="help-block">Selecione a liga</p>
@@ -322,12 +317,10 @@
 			<!-- Init row -->
 			<div class="row">
 				<div class="col-sm-5 col-xs-5 col-md-5"></div>
-
 				<div class="col-sm-2 col-xs-2 col-md-2 text-center">
 					<br /> <input class="btn btn-primary" type="submit" value="Enviar"
 						name="nm-enviar" /> <br /> <br /> <br />
 				</div>
-
 				<div class="col-sm-5 col-xs-5 col-md-5"></div>
 			</div>
 			<!-- End row -->

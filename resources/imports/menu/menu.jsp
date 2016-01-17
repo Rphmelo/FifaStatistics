@@ -29,14 +29,11 @@
 							<li><a href="ServletFifa?fork=time&numberList=3">Times</a></li>
 							<li><a href="ServletFifa?fork=tppartida&numberList=2">Tipos de Partida</a></li>
 							<li class="dropdown-header">Consulta Personalizada</li>
-							<li><a href="">Jogadores</a></li>
-							<li><a href="">Ligas</a></li>
-							<li><a href="">Partidas</a></li>
-							<li><a href="">Times</a></li>
-							<li><a href="">Tipos de Partida</a></li>
+							<li><a href="ServletFifa?fork=consulta-p&numberList=2">Ir </a></li>
+							
 						</ul>
 						</li>
-					<li role="presentation"><a href="#"><b>Médias</b></a></li>
+					<li role="presentation"><a href="#"><b>Desempenho</b></a></li>
 				</ul>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse"></div>

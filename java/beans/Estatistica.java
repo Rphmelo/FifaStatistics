@@ -112,15 +112,7 @@ public class Estatistica implements Serializable{
 		this.precisaoPasse = precisaoPasse;
 	}
 	public void setResultado(char res) {
-		if(String.valueOf(res).equals("V")){
-			this.resultado = "Vitória";
-		}
-		else if(String.valueOf(res).equals("D")){
-			this.resultado = "Derrota";
-		}
-		else if(String.valueOf(res).equals("E")){
-			this.resultado = "Empate";
-		}
+		this.resultado = String.valueOf(res);
 	}
 	
 	
