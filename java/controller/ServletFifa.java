@@ -3,7 +3,6 @@ package controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,11 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Jogador;
 import beans.Liga;
+import beans.Media;
 import beans.Partida;
 import beans.Time;
 import beans.Tipo_Partida;
 import bo.JogadorBO;
 import bo.LigaBO;
+import bo.MediaBO;
 import bo.PartidaBO;
 import bo.TimeBO;
 import bo.Tipo_PartidaBO;
@@ -40,9 +41,9 @@ public class ServletFifa extends HttpServlet {
 	}
 
 	// Método que envia lista de jogadores para a pagina JSP
-	public void listarJogador(Connection con, String fork, HttpServletRequest request,
-			HttpServletResponse response) throws Excecao, SQLException,
-			ServletException, IOException {
+	public void listarJogador(Connection con, String fork,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Excecao, SQLException, ServletException, IOException {
 		// Chamando o método BO
 		List<Jogador> playerList = JogadorBO.listar(con, request, response);
 		int numberList = Integer.parseInt(request.getParameter("numberList"));
@@ -53,9 +54,9 @@ public class ServletFifa extends HttpServlet {
 	}
 
 	// Método que envia lista de times para a pagina JSP
-	public void listarTime(Connection con, String fork, HttpServletRequest request,
-			HttpServletResponse response) throws Excecao, SQLException,
-			ServletException, IOException {
+	public void listarTime(Connection con, String fork,
+			HttpServletRequest request, HttpServletResponse response)
+			throws Excecao, SQLException, ServletException, IOException {
 		// Chamando o método BO
 		List<Time> teamList = TimeBO.listar(con, request, response);
 		int numberList = Integer.parseInt(request.getParameter("numberList"));
@@ -99,14 +100,23 @@ public class ServletFifa extends HttpServlet {
 			HttpServletResponse response) throws Excecao, SQLException,
 			ServletException, IOException {
 		// Chamando o método BO
-		List<Partida> matchList = PartidaBO.listar(con, request,
-				response);
+		List<Partida> matchList = PartidaBO.listar(con, request, response);
 		// Atributos que serão manipulados pela EL na página JSP
 		int numberList = Integer.parseInt(request.getParameter("numberList"));
 		request.setAttribute("listaPartida", matchList);
 		request.setAttribute("tipoLista", "Partidas");
 		request.setAttribute("numberList", numberList);
 		request.getRequestDispatcher("consulta.jsp").forward(request, response);
+	}
+
+	// Método que lista as médias de cada jogador
+	public void listarMedia(Connection con, HttpServletRequest request,
+			HttpServletResponse response) throws Excecao, SQLException,
+			ServletException, IOException {
+		List<Media> listaResultado = MediaBO.listarResultado(con, request, response);
+		List<Media> listaMedia = MediaBO.listarMedia(con, listaResultado, request, response);
+		request.setAttribute("listaMedia", listaMedia);
+		request.getRequestDispatcher("desempenho.jsp").forward(request, response);
 	}
 
 	/**
@@ -118,27 +128,32 @@ public class ServletFifa extends HttpServlet {
 		String fork = request.getParameter("fork");
 		Connection con = null;
 		String usuario, senha;
-		usuario = "blablabla";
-		senha = "blablabla";
+		usuario = "blabla";
+		senha = "blabla";
 		try {
 			con = ConexaoFactory.controlarInstancia()
 					.getConexao(usuario, senha);
 			if (fork.equals("jogador")) {
 				this.listarJogador(con, fork, request, response);
-				request.getRequestDispatcher("consulta.jsp").forward(request, response);
+				request.getRequestDispatcher("consulta.jsp").forward(request,
+						response);
 			} else if (fork.equals("time")) {
 				this.listarTime(con, fork, request, response);
-				request.getRequestDispatcher("consulta.jsp").forward(request, response);
+				request.getRequestDispatcher("consulta.jsp").forward(request,
+						response);
 			} else if (fork.equals("liga")) {
 				this.listarLiga(con, request, response);
 			} else if (fork.equals("tppartida")) {
 				this.listarTpPartida(con, request, response);
-			}else if (fork.equals("partida")) {
+			} else if (fork.equals("partida")) {
 				this.listarPartida(con, request, response);
-			}else if (fork.equals("consulta-p")) {
+			} else if (fork.equals("consulta-p")) {
 				this.listarJogador(con, fork, request, response);
 				this.listarTime(con, fork, request, response);
-				request.getRequestDispatcher("consulta_Personalizada.jsp").forward(request, response);
+				request.getRequestDispatcher("consulta_Personalizada.jsp")
+						.forward(request, response);
+			}else if(fork.equals("media")){
+				this.listarMedia(con, request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

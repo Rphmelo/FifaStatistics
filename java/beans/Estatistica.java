@@ -3,6 +3,7 @@ package beans;
 
 //Classes importadas
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author Raphael de Melo
@@ -114,6 +115,4 @@ public class Estatistica implements Serializable{
 	public void setResultado(char res) {
 		this.resultado = String.valueOf(res);
 	}
-	
-	
 }

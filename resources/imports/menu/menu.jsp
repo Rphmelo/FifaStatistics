@@ -33,7 +33,9 @@
 							
 						</ul>
 						</li>
-					<li role="presentation"><a href="#"><b>Desempenho</b></a></li>
+					<li role="presentation">
+					<a href="ServletFifa?fork=media">
+					<b>Desempenho</b></a></li>
 				</ul>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse"></div>
