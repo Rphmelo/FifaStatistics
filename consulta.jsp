@@ -50,7 +50,7 @@
 					</tbody>
 				</table>
 				<!-- End Table -->
-
+				<h4 class="text-primary">Partida realizada em: <fmt:formatDate value="${partida.data}" /></h4>
 				<!-- Init Accordion -->
 				<div class="accordion" id="accordion<%=i%>">
 					<!-- Init Accordion-Group -->
