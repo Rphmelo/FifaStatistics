@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="resources/imports/bootstrap/css-bootstrap.jsp"%>
 <%@ include file="resources/imports/jstl/jstl.jsp"%>
-<title></title>
+<title>Consulta Personalizada</title>
 
 </head>
 <body>
@@ -22,7 +22,7 @@
 			<li><a data-toggle="tab" href="#time">Times</a></li>
 		</ul>
 		<div class="tab-content">
-			<div id="jogador" class="tab-pane fade">
+			<div id="jogador" class="tab-pane fade active">
 				<br />
 				<h4 class="text-center">Abaixo você pode filtrar a pesquisa que
 					deseja fazer.</h4>
@@ -58,17 +58,9 @@
 						<input type="hidden" name="fork" value="p-jog-2" />
 						<div class="col-sm-4 col-xs-4 col-md-4"></div>
 						<div class="col-sm-4 col-xs-4 col-md-4">
-							<p>Pesquisar desempenho do jogador</p>
+							<p>Consultar desempenho dos jogadores</p>
 							<div class="form-group">
-								<label class="control-label" for="jog-1">Jogador:</label> <select
-									class="form-control" id="jog-1" name="nm-jog-1" required>
-									<option value="">Selecione</option>
-									<c:forEach var="jogador" items="${listaOutros}">
-										<option value="${jogador.codigo}">${jogador.nome}</option>
-									</c:forEach>
-								</select>
-								<h5 class="help-block">Escolha</h5>
-								<input class="btn btn-primary" type="submit" value="Pesquisar"
+								<input class="btn btn-primary" type="submit" value="Ir"
 									name="nm-enviar" />
 							</div>
 						</div>

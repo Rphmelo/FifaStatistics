@@ -31,7 +31,7 @@ public class PartidaDAO {
 	String sql = null;
 
 	// Método que lista as partidas
-	public List<Partida> listar(Connection con) throws SQLException {
+	public List<Partida> listarTudo(Connection con) throws SQLException {
 		// Variaveis auxiliares
 		List<Partida> matchList = new ArrayList<Partida>();
 		Partida partida = null;
@@ -135,7 +135,7 @@ public class PartidaDAO {
 	}
 
 	// Método que lista as partidas entre jogadores passados como parâmetro
-	public List<Partida> listar2(Connection con, Jogador jog1, Jogador jog2)
+	public List<Partida> listarPersonalizado(Connection con, Jogador jog1, Jogador jog2)
 			throws SQLException {
 		// Variaveis auxiliares
 		List<Partida> matchList = new ArrayList<Partida>();
@@ -245,7 +245,7 @@ public class PartidaDAO {
 	}
 
 	// Método que lista as partidas entre jogadores passados como parâmetro
-	public List<Partida> listar3(Connection con, Jogador jog)
+	public List<Partida> listarPersonalizadoJog(Connection con, Jogador jog)
 			throws SQLException {
 		// Variaveis auxiliares
 		List<Partida> matchList = new ArrayList<Partida>();

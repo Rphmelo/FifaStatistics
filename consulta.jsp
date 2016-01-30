@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <%@ include file="resources/imports/bootstrap/css-bootstrap.jsp"%>
 <%@ include file="resources/imports/jstl/jstl.jsp"%>
-<title></title>
+<title>Consulta</title>
 
 </head>
 <body>

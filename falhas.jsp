@@ -8,7 +8,7 @@
 <%@ include file="resources/imports/bootstrap/css-bootstrap.jsp"%>
 <%@ include file="resources/imports/jstl/jstl.jsp"%>
 
-<title>Home</title>
+<title>Ocorreu uma falha</title>
 </head>
 <body>
 	<!-- Init Container -->

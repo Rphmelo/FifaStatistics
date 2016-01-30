@@ -18,7 +18,6 @@
 		<div class="img-responsive text-center">
 		<img class="center " width="510" height="253"  src="resources/images/fifa.jpg"/> <br/><br/>
 		 </div>
-
 		<!-- Init row -->
 		<div class="row">
 			<!-- Init col-sm-4 -->

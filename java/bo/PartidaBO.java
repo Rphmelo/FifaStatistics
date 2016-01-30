@@ -32,7 +32,7 @@ public abstract class PartidaBO {
 			Excecao.database(request, response);
 			throw new Excecao();
 		}
-		List<Partida> matchList = partidaDAO.listar(con);
+		List<Partida> matchList = partidaDAO.listarTudo(con);
 		if (matchList == null) {
 			Excecao.NoData(request, response);
 			throw new Excecao();
@@ -48,7 +48,7 @@ public abstract class PartidaBO {
 			Excecao.database(request, response);
 			throw new Excecao();
 		}
-		List<Partida> matchList = partidaDAO.listar2(con, jog1, jog2);
+		List<Partida> matchList = partidaDAO.listarPersonalizado(con, jog1, jog2);
 		if (matchList == null) {
 			Excecao.NoData(request, response);
 			throw new Excecao();
@@ -64,7 +64,7 @@ public abstract class PartidaBO {
 			Excecao.database(request, response);
 			throw new Excecao();
 		}
-		List<Partida> matchList = partidaDAO.listar3(con, jog);
+		List<Partida> matchList = partidaDAO.listarPersonalizadoJog(con, jog);
 		if (matchList == null) {
 			Excecao.NoData(request, response);
 			throw new Excecao();

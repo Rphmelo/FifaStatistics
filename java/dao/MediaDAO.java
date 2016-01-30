@@ -98,7 +98,7 @@ public class MediaDAO {
 			//Variavel responsavel por chamar o metodo para listar as partidas feitas por um jogador
 			pdao = new PartidaDAO();
 			//Lista de partidas feitas por um jogador
-			listPartida = pdao.listar3(con, listMedia.get(indice).getJogador());
+			listPartida = pdao.listarPersonalizadoJog(con, listMedia.get(indice).getJogador());
 			//Preenchendo os dados sobre gols relacionados ao jogador
 			gol = new Gol();
 			int golContra = listMedia.get(indice).somarGolsContra(listPartida, listMedia.get(indice).getJogador());

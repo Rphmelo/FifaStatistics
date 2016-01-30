@@ -8,7 +8,7 @@
 <%@ include file="resources/imports/bootstrap/css-bootstrap.jsp"%>
 <%@ include file="resources/imports/jstl/jstl.jsp"%>
 
-<title>Home</title>
+<title>Desempenho</title>
 </head>
 <body>
 	<!-- Init Container -->
@@ -33,7 +33,7 @@
 		<%
 			int i = 1;
 		%>
-<div class="row">
+		<div class="row">
 		<c:forEach var="media" items="${listaMedia}">
 			<div class="col-sm-3 col-xs-3 col-md-3">
 		
