@@ -25,7 +25,7 @@ public abstract class PartidaBO {
 	public static PartidaDAO partidaDAO = new PartidaDAO();
 
 	// Método que lista as partidas
-	public static List<Partida> listar(Connection con,
+	public static List<Partida> listarTudo(Connection con,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Excecao, SQLException {
 		if (con == null) {
@@ -41,7 +41,7 @@ public abstract class PartidaBO {
 	}
 
 	// Método que lista as partidas entre dois jogadores
-	public static List<Partida> listar2(Connection con, Jogador jog1, Jogador jog2,
+	public static List<Partida> listarPersonalizado(Connection con, Jogador jog1, Jogador jog2,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Excecao, SQLException {
 		if (con == null) {
@@ -49,7 +49,7 @@ public abstract class PartidaBO {
 			throw new Excecao();
 		}
 		List<Partida> matchList = partidaDAO.listarPersonalizado(con, jog1, jog2);
-		if (matchList == null) {
+		if (matchList.size() == 0) {
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}
@@ -57,7 +57,7 @@ public abstract class PartidaBO {
 	}
 
 	// Método que lista as partidas de um jogador específico
-	public static List<Partida> listar3(Connection con, Jogador jog,
+	public static List<Partida> listarPersonalizadoJog(Connection con, Jogador jog,
 			HttpServletRequest request, HttpServletResponse response)
 			throws Excecao, SQLException {
 		if (con == null) {
@@ -65,7 +65,7 @@ public abstract class PartidaBO {
 			throw new Excecao();
 		}
 		List<Partida> matchList = partidaDAO.listarPersonalizadoJog(con, jog);
-		if (matchList == null) {
+		if (matchList.size() == 0) {
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}

@@ -100,7 +100,7 @@ public class ServletFifa extends HttpServlet {
 			HttpServletResponse response) throws Excecao, SQLException,
 			ServletException, IOException {
 		// Chamando o método BO
-		List<Partida> matchList = PartidaBO.listar(con, request, response);
+		List<Partida> matchList = PartidaBO.listarTudo(con, request, response);
 		// Atributos que serão manipulados pela EL na página JSP
 		int numberList = Integer.parseInt(request.getParameter("numberList"));
 		request.setAttribute("listaPartida", matchList);
@@ -119,6 +119,27 @@ public class ServletFifa extends HttpServlet {
 		request.getRequestDispatcher("desempenho.jsp").forward(request, response);
 	}
 
+	// Método que lista a média personalizada dos jogadores
+	public void listarMediaPersonalizada(Connection con, HttpServletRequest request,
+			HttpServletResponse response) throws Excecao, SQLException,
+			ServletException, IOException {
+		//variavel auxiliar
+		Media media = new Media();
+		//Preenchendo objetos Jogador
+		String nomeJog1 = request.getParameter("nm-jog-2");
+		String nomeJog2 = request.getParameter("nm-jog-3");
+		Jogador jog1 = new Jogador();
+		Jogador jog2 = new Jogador();
+		jog1.setNome(nomeJog1);
+		jog2.setNome(nomeJog2);
+		//Preenchendo lista de partidas
+		List<Partida> listaPartida = PartidaBO.listarPersonalizado(con, jog1, jog2, request, response);
+		//Preenchendo Lista de Media
+		List<Media> listaMedia = media.listarMediaPersonalizada(listaPartida); 
+		request.setAttribute("listaMedia", listaMedia);
+		request.getRequestDispatcher("desempenho.jsp").forward(request, response);
+	
+	}
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -128,8 +149,8 @@ public class ServletFifa extends HttpServlet {
 		String fork = request.getParameter("fork");
 		Connection con = null;
 		String usuario, senha;
-		usuario = "blabla";
-		senha = "blabla";
+		usuario = "blablabla";
+		senha = "blablabla";
 		try {
 			con = ConexaoFactory.controlarInstancia()
 					.getConexao(usuario, senha);
@@ -154,6 +175,8 @@ public class ServletFifa extends HttpServlet {
 						.forward(request, response);
 			}else if(fork.equals("media")){
 				this.listarMedia(con, request, response);
+			}else if(fork.equals("p-jog-2")){
+				this.listarMediaPersonalizada(con, request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

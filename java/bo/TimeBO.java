@@ -32,7 +32,7 @@ public abstract class TimeBO {
 			throw new Excecao();
 		}
 		List<Time> teamList = timeDAO.listar(con);
-		if(teamList == null){
+		if(teamList.size() == 0){
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}

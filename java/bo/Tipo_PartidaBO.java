@@ -31,7 +31,7 @@ public abstract class Tipo_PartidaBO {
 			throw new Excecao();
 		}
 		List<Tipo_Partida> matchTypeList = tipo_PartidaDAO.listar(con);
-		if (matchTypeList == null) {
+		if (matchTypeList.size() == 0) {
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}

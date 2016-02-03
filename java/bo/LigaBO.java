@@ -31,7 +31,7 @@ public abstract class LigaBO {
 			throw new Excecao();
 		}
 		List<Liga> leagueList = ligaDAO.listar(con);
-		if(leagueList == null){
+		if(leagueList.size() == 0){
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}

@@ -32,7 +32,7 @@ public abstract class JogadorBO {
 			throw new Excecao();
 		}
 		List<Jogador> playerList = jogadorDAO.listar(con);
-		if(playerList == null){
+		if(playerList.size() == 0){
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}

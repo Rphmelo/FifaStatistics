@@ -25,7 +25,7 @@ public abstract class MediaBO {
 			throw new Excecao();
 		}
 		List<Media> averageList = mediaDAO.listarResultado(con);
-		if (averageList == null) {
+		if (averageList.size() == 0) {
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}
@@ -41,7 +41,7 @@ public abstract class MediaBO {
 			throw new Excecao();
 		}
 		List<Media> averageList = mediaDAO.listarMedia(con, listMedia);
-		if (listMedia == null) {
+		if (averageList.size() == 0) {
 			Excecao.NoData(request, response);
 			throw new Excecao();
 		}

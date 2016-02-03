@@ -67,7 +67,11 @@
 										<td>${media.qtVitoria}</td>
 										<td>${media.qtDerrota}</td>
 										<td>${media.qtEmpate}</td>
-										<td>${media.aproveitamento}</td>
+										<td>
+										<fmt:formatNumber type="number" pattern="0.##"
+										value="${media.aproveitamento}">
+										</fmt:formatNumber>%
+										</td>
 									</tr>
 								</tbody>
 							</table>
@@ -88,9 +92,11 @@
 										<td>${media.gol.golsPro}</td>
 										<td>${media.gol.golsContra}</td>
 										<td>${media.gol.saldo}</td>
-										<td>${media.gol.media }</td>
+										<td><fmt:formatNumber type="number" pattern="0.##"
+										value="${media.gol.media}"></fmt:formatNumber></td>
 										<td>${media.falta.total}</td>
-										<td>${media.falta.media}</td>
+										<td><fmt:formatNumber type="number" pattern="0.##"
+										value="${media.falta.media}"></fmt:formatNumber></td>
 									</tr>
 								</tbody>
 							</table>
@@ -110,12 +116,17 @@
 									</tr>
 									<tr class="success text-center text-capitalize">
 										<td>${media.fin.totalFin}</td>
-										<td>${media.fin.mediaFin}</td>
+										<td><fmt:formatNumber type="number" pattern="0.##"
+										value="${media.fin.mediaFin}"></fmt:formatNumber></td>
 										<td>${media.fin.totalFinCerta}</td>
-										<td>${media.fin.mediaFinCerta}</td>
-										<td>${media.fin.aproveitamento}%</td>
-										<td>${media.precisaoPasse}%</td>
-										<td>${media.posseBola}%</td>
+										<td><fmt:formatNumber type="number" pattern="0.##"
+										value="${media.fin.mediaFinCerta}"></fmt:formatNumber></td>
+										<td><fmt:formatNumber type="number" pattern="0.##"
+										value="${media.fin.aproveitamento}"></fmt:formatNumber>%</td>
+										<td><fmt:formatNumber type="number" pattern="0.##"
+										value="${media.precisaoPasse}"></fmt:formatNumber>%</td>
+										<td><fmt:formatNumber type="number" pattern="0.##"
+										value="${media.posseBola}"></fmt:formatNumber>%</td>
 									</tr>
 								</tbody>
 							</table>

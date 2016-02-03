@@ -11,7 +11,7 @@ public class Falta {
 	
 	//Atributos
 	private int total;
-	private float media;
+	private double media;
 
 	//Construtor vazio
 	public Falta() {
@@ -19,7 +19,7 @@ public class Falta {
 		}
 	
 	//Construtor cheio
-	public Falta(int total, float media) {
+	public Falta(int total, double media) {
 		super();
 		this.total = total;
 		this.media = media;
@@ -29,7 +29,7 @@ public class Falta {
 	public int getTotal() {
 		return total;
 	}
-	public float getMedia() {
+	public double getMedia() {
 		return media;
 	}
 	
@@ -37,7 +37,7 @@ public class Falta {
 	public void setTotal(int total) {
 		this.total = total;
 	}
-	public void setMedia(float media) {
+	public void setMedia(double media) {
 		this.media = media;
 	}
 

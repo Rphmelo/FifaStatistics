@@ -14,15 +14,15 @@ public class Media {
 
 	// Atributos
 	private Jogador jogador;
-	private byte posseBola;
-	private byte precisaoPasse;
+	private float posseBola;
+	private float precisaoPasse;
 	private Finalizacao fin;
 	private Falta falta;
 	private Gol gol;
 	private int qtVitoria;
 	private int qtEmpate;
 	private int qtDerrota;
-	private double aproveitamento;
+	private float aproveitamento;
 	private int qtPartida;
 
 	// Construtor vazio
@@ -31,9 +31,9 @@ public class Media {
 	}
 
 	// Construtor cheio
-	public Media(Jogador jogador, byte posseBola, byte precisaoPasse,
+	public Media(Jogador jogador, float posseBola, float precisaoPasse,
 			Finalizacao fin, Falta falta, Gol gol, int qtVitoria, int qtEmpate,
-			int qtDerrota, double aproveitamento, int qtPartida) {
+			int qtDerrota, float aproveitamento, int qtPartida) {
 		super();
 		this.jogador = jogador;
 		this.posseBola = posseBola;
@@ -53,11 +53,11 @@ public class Media {
 		return jogador;
 	}
 
-	public byte getPosseBola() {
+	public float getPosseBola() {
 		return posseBola;
 	}
 
-	public byte getPrecisaoPasse() {
+	public float getPrecisaoPasse() {
 		return precisaoPasse;
 	}
 
@@ -85,7 +85,7 @@ public class Media {
 		return qtDerrota;
 	}
 
-	public double getAproveitamento() {
+	public float getAproveitamento() {
 		return aproveitamento;
 	}
 
@@ -98,11 +98,11 @@ public class Media {
 		this.jogador = jogador;
 	}
 
-	public void setPosseBola(byte posseBola) {
+	public void setPosseBola(float posseBola) {
 		this.posseBola = posseBola;
 	}
 
-	public void setPrecisaoPasse(byte precisaoPasse) {
+	public void setPrecisaoPasse(float precisaoPasse) {
 		this.precisaoPasse = precisaoPasse;
 	}
 
@@ -130,8 +130,8 @@ public class Media {
 		this.qtDerrota = qtDerrota;
 	}
 
-	public void setAproveitamento(double aproveitamento) {
-		this.aproveitamento = aproveitamento;
+	public void setAproveitamento(float aproveitamento) {
+		this.aproveitamento = aproveitamento;	
 	}
 
 	public void setQtPartida(int qtPartida) {
@@ -164,7 +164,8 @@ public class Media {
 	 * acordo com a pesquisa do usuário
 	 */
 	public List<Media> preencherJogador(List<Partida> listaPartida, List<Media> listaMedia) {
-		Jogador jog1 = new Jogador(), jog2 = new Jogador();
+		Jogador jog1 = new Jogador();
+		Jogador jog2 = new Jogador();
 		jog1.setNome(listaPartida.get(0).getCasa().getEstatistica().getJogador().getNome());
 		jog2.setNome(listaPartida.get(0).getVisitante().getEstatistica().getJogador().getNome());
 		listaMedia.get(0).setJogador(jog1);
@@ -179,8 +180,8 @@ public class Media {
 	public List<Media> calcularQtPartida(List<Partida> listaPartida,
 			List<Media> listaMedia) {
 		int qtPartida = listaPartida.size();
-		for (int i = 0; i < listaMedia.size(); i++) {
-			listaMedia.get(i).setQtPartida(qtPartida);
+		for (Media media : listaMedia) {
+			media.setQtPartida(qtPartida);
 		}
 		return listaMedia;
 	}
@@ -191,8 +192,6 @@ public class Media {
 	 */
 	public List<Media> calcularVitoria(List<Partida> listaPartida,
 			List<Media> listaMedia) {
-		Media media1 = new Media();
-		Media media2 = new Media();
 		// Criando variaveis com o nome dos jogadores
 		String nomeJog1 = "", nomeJog2 = "";
 		nomeJog1 = listaMedia.get(0).getJogador().getNome();
@@ -230,18 +229,9 @@ public class Media {
 			}
 		}
 		// Preenchendo media 1
-		Jogador jog1 = new Jogador();
-		jog1.setNome(nomeJog1);
-		media1.setJogador(jog1);
-		media1.setQtVitoria(vJog1);
+		listaMedia.get(0).setQtVitoria(vJog1);
 		// Preenchendo media 2
-		Jogador jog2 = new Jogador();
-		jog2.setNome(nomeJog2);
-		media2.setJogador(jog2);
-		media2.setQtVitoria(vJog2);
-		// Preenchendo a lista
-		listaMedia.add(media1);
-		listaMedia.add(media2);
+		listaMedia.get(1).setQtVitoria(vJog2);
 		// Retorna a lista de médias com o campo 'Viória' preenchido
 		return listaMedia;
 	}
@@ -252,8 +242,6 @@ public class Media {
 	 */
 	public List<Media> calcularDerrota(List<Partida> listaPartida,
 			List<Media> listaMedia) {
-		Media media1 = new Media();
-		Media media2 = new Media();
 		// Criando variaveis com o nome dos jogadores
 		String nomeJog1 = "", nomeJog2 = "";
 		nomeJog1 = listaMedia.get(0).getJogador().getNome();
@@ -291,18 +279,9 @@ public class Media {
 			}
 		}
 		// Preenchendo media 1
-		Jogador jog1 = new Jogador();
-		jog1.setNome(nomeJog1);
-		media1.setJogador(jog1);
-		media1.setQtDerrota(dJog1);
+		listaMedia.get(0).setQtDerrota(dJog1);
 		// Preenchendo media 2
-		Jogador jog2 = new Jogador();
-		jog2.setNome(nomeJog2);
-		media2.setJogador(jog2);
-		media2.setQtDerrota(dJog2);
-		// Preenchendo a lista
-		listaMedia.add(media1);
-		listaMedia.add(media2);
+		listaMedia.get(1).setQtDerrota(dJog2);
 		// Retorna a lista de médias com o campo 'Derrota' preenchido
 		return listaMedia;
 	}
@@ -313,8 +292,6 @@ public class Media {
 	 */
 	public List<Media> calcularEmpate(List<Partida> listaPartida,
 			List<Media> listaMedia) {
-		Media media1 = new Media();
-		Media media2 = new Media();
 		// Criando variaveis com o nome dos jogadores
 		String nomeJog1 = "", nomeJog2 = "";
 		nomeJog1 = listaMedia.get(0).getJogador().getNome();
@@ -351,18 +328,9 @@ public class Media {
 			}
 		}
 		// Preenchendo media 1
-		Jogador jog1 = new Jogador();
-		jog1.setNome(nomeJog1);
-		media1.setJogador(jog1);
-		media1.setQtEmpate(eJog1);
+		listaMedia.get(0).setQtEmpate(eJog1);
 		// Preenchendo media 2
-		Jogador jog2 = new Jogador();
-		jog2.setNome(nomeJog2);
-		media2.setJogador(jog2);
-		media2.setQtEmpate(eJog2);
-		// Preenchendo a lista
-		listaMedia.add(media1);
-		listaMedia.add(media2);
+		listaMedia.get(1).setQtEmpate(eJog2);
 		// Retorna a lista de médias com o campo 'Empate' preenchido
 		return listaMedia;
 	}
@@ -373,19 +341,9 @@ public class Media {
 	 */
 	public List<Media> calcularAproveitamento(List<Partida> listaPartida,
 			List<Media> listaMedia) {
-		// Aproveitamento
-		float aproveitamento = 0;
-		// Desempenho
-		int vitoria, derrota, empate, qtPartida = 0;
-		for (int i = 0; i < listaMedia.size(); i++) {
-			// Preenchendo variaveis auxiliares
-			vitoria = listaMedia.get(i).getQtVitoria();
-			derrota = listaMedia.get(i).getQtDerrota();
-			empate = listaMedia.get(i).getQtEmpate();
-			qtPartida = listaMedia.get(i).getQtPartida();
-			// calculando aproveitamento
-			aproveitamento = (((vitoria * 3) + empate + (derrota * 0)) / (qtPartida * 3)) * 100;
-			listaMedia.get(i).setAproveitamento(aproveitamento);
+		for (Media media : listaMedia) {
+			float aproveitamento = ((((float)(media.getQtVitoria() * 3) + (float) media.getQtEmpate()) / ((float) media.getQtPartida() * 3)) * 100);
+			media.setAproveitamento(aproveitamento);
 		}
 		return listaMedia;
 	}
@@ -396,7 +354,7 @@ public class Media {
 	 */
 	public List<Media> calcularPosseBola(List<Partida> listaPartida,
 			List<Media> listaMedia) {
-		int posJog1 = 0, posJog2 = 0;
+		float posJog1 = 0, posJog2 = 0;
 		// Criando variaveis com o nome dos jogadores
 		String nomeJog1 = "", nomeJog2 = "";
 		nomeJog1 = listaMedia.get(0).getJogador().getNome();
@@ -421,16 +379,16 @@ public class Media {
 						.getPosseDeBola();
 			} else if (listaPartida.get(i).getVisitante().getEstatistica()
 					.getJogador().getNome().equals(nomeJog2)) {
-				posJog2 += listaPartida.get(i).getCasa().getEstatistica()
+				posJog2 += listaPartida.get(i).getVisitante().getEstatistica()
 						.getPosseDeBola();
 			}
 		}
-		int mediaPosse1 = posJog1 / listaPartida.size();
-		int mediaPosse2 = posJog2 / listaPartida.size();
+		float mediaPosse1 = posJog1 / listaPartida.size();
+		float mediaPosse2 = posJog2 / listaPartida.size();
 
 		// Preenchendo posse de bola na lista
-		listaMedia.get(0).setPosseBola((byte) mediaPosse1);
-		listaMedia.get(1).setPosseBola((byte) mediaPosse2);
+		listaMedia.get(0).setPosseBola(mediaPosse1);
+		listaMedia.get(1).setPosseBola(mediaPosse2);
 		// Retorna lista de media com a posse de bola preenchida
 		return listaMedia;
 	}
@@ -441,7 +399,7 @@ public class Media {
 	 */
 	public List<Media> calcularPresPasse(List<Partida> listaPartida,
 			List<Media> listaMedia) {
-		int pasJog1 = 0, pasJog2 = 0;
+		float pasJog1 = 0, pasJog2 = 0;
 		// Criando variaveis com o nome dos jogadores
 		String nomeJog1 = "", nomeJog2 = "";
 		nomeJog1 = listaMedia.get(0).getJogador().getNome();
@@ -451,11 +409,11 @@ public class Media {
 			if (listaPartida.get(i).getCasa().getEstatistica().getJogador()
 					.getNome().equals(nomeJog1)) {
 				pasJog1 += listaPartida.get(i).getCasa().getEstatistica()
-						.getPosseDeBola();
+						.getPrecisaoPasse();
 			} else if (listaPartida.get(i).getCasa().getEstatistica()
 					.getJogador().getNome().equals(nomeJog2)) {
 				pasJog2 += listaPartida.get(i).getCasa().getEstatistica()
-						.getPosseDeBola();
+						.getPrecisaoPasse();
 			}
 		}
 		// Somando a precisao no passe para os visitantes
@@ -463,19 +421,19 @@ public class Media {
 			if (listaPartida.get(i).getVisitante().getEstatistica()
 					.getJogador().getNome().equals(nomeJog1)) {
 				pasJog1 += listaPartida.get(i).getVisitante().getEstatistica()
-						.getPosseDeBola();
+						.getPrecisaoPasse();
 			} else if (listaPartida.get(i).getVisitante().getEstatistica()
 					.getJogador().getNome().equals(nomeJog2)) {
-				pasJog2 += listaPartida.get(i).getCasa().getEstatistica()
-						.getPosseDeBola();
+				pasJog2 += listaPartida.get(i).getVisitante().getEstatistica()
+						.getPrecisaoPasse();
 			}
 		}
-		int mediaPasse1 = pasJog1 / listaPartida.size();
-		int mediaPasse2 = pasJog2 / listaPartida.size();
+		float mediaPasse1 = pasJog1 / listaPartida.size();
+		float mediaPasse2 = pasJog2 / listaPartida.size();
 
 		// Preenchendo posse de bola na lista
-		listaMedia.get(0).setPrecisaoPasse((byte) mediaPasse1);
-		listaMedia.get(1).setPrecisaoPasse((byte) mediaPasse2);
+		listaMedia.get(0).setPrecisaoPasse(mediaPasse1);
+		listaMedia.get(1).setPrecisaoPasse(mediaPasse2);
 		// Retorna lista de media com a precisão no passe preenchida
 		return listaMedia;
 	}
@@ -513,13 +471,13 @@ public class Media {
 						.getEstatistica().getGols();
 			} else if (listaPartida.get(i).getVisitante().getEstatistica()
 					.getJogador().getNome().equals(nomeJog2)) {
-				gTotalJog2 += listaPartida.get(i).getCasa().getEstatistica()
+				gTotalJog2 += listaPartida.get(i).getVisitante().getEstatistica()
 						.getGols();
 			}
 		}
 		// Variaveis que guardam valores sobre gol
-		int mediaGolJog1 = gTotalJog1 / listaPartida.size();
-		int mediaGolJog2 = gTotalJog2 / listaPartida.size();
+		float mediaGolJog1 = (float) gTotalJog1 / listaPartida.size();
+		float mediaGolJog2 = (float) gTotalJog2 / listaPartida.size();
 		int golContraJog1 = this.somarGolsContra(listaPartida, listaMedia
 				.get(0).getJogador());
 		int golContraJog2 = this.somarGolsContra(listaPartida, listaMedia
@@ -542,9 +500,62 @@ public class Media {
 		listaMedia.get(1).setGol(golJog2);
 		return listaMedia;
 	}
-
 	/*
-	 * Método que retorna dados relacionados a gol de dois jogadores entre si de
+	 * Método que retorna dados relacionados a faltas de dois jogadores entre si de
+	 * acordo com a pesquisa do usuário
+	 */
+	public List<Media> calcularFalta(List<Partida> listaPartida,
+			List<Media> listaMedia) {
+		int falTotalJog1 = 0, falTotalJog2 = 0;
+
+		// Criando variaveis com o nome dos jogadores
+		String nomeJog1 = "", nomeJog2 = "";
+		nomeJog1 = listaMedia.get(0).getJogador().getNome();
+		nomeJog2 = listaMedia.get(1).getJogador().getNome();
+
+		// Somando todas as faltas feitas pelos jogadores que jogaram em casa
+		for (int i = 0; i < listaPartida.size(); i++) {
+			if (listaPartida.get(i).getCasa().getEstatistica().getJogador()
+					.getNome().equals(nomeJog1)) {
+				falTotalJog1 += listaPartida.get(i).getCasa().getEstatistica()
+						.getFaltasCometidas();
+			} else if (listaPartida.get(i).getCasa().getEstatistica()
+					.getJogador().getNome().equals(nomeJog2)) {
+				falTotalJog2 += listaPartida.get(i).getCasa().getEstatistica()
+						.getFaltasCometidas();
+			}
+		}
+		// Somando todas as faltas feitss pelos visitantes
+		for (int i = 0; i < listaPartida.size(); i++) {
+			if (listaPartida.get(i).getVisitante().getEstatistica()
+					.getJogador().getNome().equals(nomeJog1)) {
+				falTotalJog1 += listaPartida.get(i).getVisitante()
+						.getEstatistica().getFaltasCometidas();
+			} else if (listaPartida.get(i).getVisitante().getEstatistica()
+					.getJogador().getNome().equals(nomeJog2)) {
+				falTotalJog2 += listaPartida.get(i).getVisitante().getEstatistica()
+						.getFaltasCometidas();
+			}
+		}
+		// Variaveis que guardam valores sobre falta
+		double mediaFalJog1 = (double) falTotalJog1 / listaPartida.size();
+		double mediaFalJog2 = (double) falTotalJog2 / listaPartida.size();
+		// Preenchendo falta
+		Falta faltaJog1 = new Falta();
+		Falta faltaJog2 = new Falta();
+		// Jogador 1
+		faltaJog1.setTotal(falTotalJog1);
+		faltaJog1.setMedia(mediaFalJog1);
+		// Jogador 2
+		faltaJog2.setTotal(falTotalJog2);
+		faltaJog2.setMedia(mediaFalJog2);
+		// Preenchendo lista
+		listaMedia.get(0).setFalta(faltaJog1);
+		listaMedia.get(1).setFalta(faltaJog2);
+		return listaMedia;
+	}
+	/*
+	 * Método que retorna dados relacionados a finalizações de dois jogadores entre si de
 	 * acordo com a pesquisa do usuário
 	 */
 	public List<Media> calcularFin(List<Partida> listaPartida,
@@ -577,7 +588,7 @@ public class Media {
 						.getEstatistica().getFinalizacao();
 			} else if (listaPartida.get(i).getVisitante().getEstatistica()
 					.getJogador().getNome().equals(nomeJog2)) {
-				fTotalJog2 += listaPartida.get(i).getCasa().getEstatistica()
+				fTotalJog2 += listaPartida.get(i).getVisitante().getEstatistica()
 						.getFinalizacao();
 			}
 		}
@@ -603,16 +614,16 @@ public class Media {
 						.getEstatistica().getFinalizacaoCerta();
 			} else if (listaPartida.get(i).getVisitante().getEstatistica()
 					.getJogador().getNome().equals(nomeJog2)) {
-				fCertaTotalJog2 += listaPartida.get(i).getCasa().getEstatistica()
+				fCertaTotalJog2 += listaPartida.get(i).getVisitante().getEstatistica()
 						.getFinalizacaoCerta();
 			}
 		}
 
 		// Variaveis que guardam valores sobre finalizacao
-		int mediaFinJog1 = fTotalJog1 / listaPartida.size();
-		int mediaFinJog2 = fTotalJog2 / listaPartida.size();
-		int mediaFinCertaJog1 = fCertaTotalJog1 / listaPartida.size();
-		int mediaFinCertaJog2 = fCertaTotalJog2 / listaPartida.size();
+		float mediaFinJog1 = (float) fTotalJog1 / listaPartida.size();
+		float mediaFinJog2 = (float) fTotalJog2 / listaPartida.size();
+		float mediaFinCertaJog1 = (float) fCertaTotalJog1 / listaPartida.size();
+		float mediaFinCertaJog2 = (float) fCertaTotalJog2 / listaPartida.size();
 		// Preenchendo Finalizacao
 		Finalizacao finJog1 = new Finalizacao();
 		Finalizacao finJog2 = new Finalizacao();
@@ -639,7 +650,15 @@ public class Media {
 	 * acordo com a pesquisa do usuário
 	 */
 	public List<Media> listarMediaPersonalizada(List<Partida> listaPartida) {
+		//Lista que será usada em todos os metodos que foram chamados
 		List<Media> listaMedia = new ArrayList<Media>();
+		//Criando objetos que serão manipulados
+		Media media1 = new Media();
+		Media media2 = new Media();
+		//Preenchendo lista com os objetos nulos que serão manipulados
+		listaMedia.add(media1);
+		listaMedia.add(media2);
+		//Chamando todos os métodos para preencher o desempenho
 		listaMedia = this.preencherJogador(listaPartida, listaMedia);
 		listaMedia = this.calcularVitoria(listaPartida, listaMedia);
 		listaMedia = this.calcularDerrota(listaPartida, listaMedia);
@@ -650,6 +669,7 @@ public class Media {
 		listaMedia = this.calcularGol(listaPartida, listaMedia);
 		listaMedia = this.calcularPosseBola(listaPartida, listaMedia);
 		listaMedia = this.calcularPresPasse(listaPartida, listaMedia);
+		listaMedia = this.calcularFalta(listaPartida, listaMedia);
 		return listaMedia;
 	}
 }

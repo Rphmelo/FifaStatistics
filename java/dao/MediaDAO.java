@@ -66,7 +66,7 @@ public class MediaDAO {
 			media.setQtVitoria(result.getInt(4));
 			media.setQtDerrota(result.getInt(5));
 			media.setQtEmpate(result.getInt(6));
-			media.setAproveitamento(result.getDouble(7));
+			media.setAproveitamento(result.getFloat(7));
 			listResultado.add(media);
 		}
 		// Fechando estrutura e resultado
@@ -85,9 +85,9 @@ public class MediaDAO {
 		PartidaDAO pdao = null;
 		// Script SQL
 		sql = "SELECT Jog.cd_jogador, JOG.nm_jogador, COUNT(EST.cd_estatistica), SUM(EST.qt_gols), ROUND(AVG(EST.qt_gols), 1), "
-				+ "ROUND(AVG(EST.nr_precisao_passe), 0), ROUND(AVG(EST.qt_finalizacao_certa), 0), SUM(EST.qt_finalizacao_certa), "
+				+ "ROUND(AVG(EST.nr_precisao_passe), 1), ROUND(AVG(EST.qt_finalizacao_certa), 0), SUM(EST.qt_finalizacao_certa), "
 				+ "ROUND(AVG(EST.qt_finalizacao), 0), SUM(EST.qt_finalizacao), ROUND(AVG(EST.qt_faltas_cometidas), 1), "
-				+ "SUM(EST.qt_faltas_cometidas) , ROUND(AVG(EST.nr_posse_bola), 0)  FROM T_FIFA_ESTATISTICA EST JOIN T_FIFA_JOGADOR "
+				+ "SUM(EST.qt_faltas_cometidas) , ROUND(AVG(EST.nr_posse_bola), 1)  FROM T_FIFA_ESTATISTICA EST JOIN T_FIFA_JOGADOR "
 				+ "JOG ON JOG.cd_jogador = EST.cd_jogador GROUP BY JOG.cd_jogador, JOG.nm_jogador ORDER BY  JOG.nm_jogador ASC";
 
 		// Preparando estrutura
@@ -107,8 +107,8 @@ public class MediaDAO {
 			gol.setSaldo();
 			gol.setMedia(result.getFloat(5));
 			listMedia.get(indice).setGol(gol);
-			//Preenchendo a posse de bola relacionada ao jogador
-			listMedia.get(indice).setPrecisaoPasse(result.getByte(6));
+			//Preenchendo a precisão no passe relacionada ao jogador
+			listMedia.get(indice).setPrecisaoPasse(result.getFloat(6));
 			//Preenchendo os dados das finalizações feitas pelo jogador
 			fin = new Finalizacao();
 			fin.setMediaFinCerta(result.getFloat(7));
@@ -123,7 +123,7 @@ public class MediaDAO {
 			falta.setTotal(result.getInt(12));
 			listMedia.get(indice).setFalta(falta);
 			//Preenchendo a posse de bola do jogador
-			listMedia.get(indice).setPosseBola(result.getByte(13));
+			listMedia.get(indice).setPosseBola(result.getFloat(13));
 		}
 		// Fechando estrutura e resultado
 		result.close();

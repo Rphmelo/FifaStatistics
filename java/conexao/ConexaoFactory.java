@@ -42,7 +42,7 @@ public final class ConexaoFactory {
 	public Connection getConexao(String usuario, String senha) throws Exception {
 
 		try {
-			String url = "blablablabla";
+			String url = "blablabla";
 
 			if (url.indexOf("oracle") > 0) {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
