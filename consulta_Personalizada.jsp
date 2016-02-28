@@ -16,8 +16,8 @@
 		<c:import url="resources/imports/menu/menu.jsp"></c:import>
 
 		<ul class="nav nav-tabs">
-			<li class="active"><a data-toggle="tab" href="#jogador">Jogadores</a></li>
 			<li><a data-toggle="tab" href="#liga">Ligas</a></li>
+			<li><a data-toggle="tab" href="#jogador">Jogadores</a></li>
 			<li><a data-toggle="tab" href="#partida">Partidas</a></li>
 			<li><a data-toggle="tab" href="#time">Times</a></li>
 		</ul>
@@ -33,8 +33,8 @@
 						<div class="col-sm-4 col-xs-4 col-md-4">
 							<p>Pesquisar desempenho do jogador com um time</p>
 							<div class="form-group">
-								<label class="control-label" for="jog-2">Jogador:</label> <select
-									class="form-control" id="jog-2" name="nm-jog-2" required>
+								<label class="control-label" for="jog-1">Jogador:</label> <select
+									class="form-control" id="jog-1" name="nm-jog-1" required>
 									<option value="">Selecione</option>
 									<c:forEach var="jogador" items="${listaOutros}">
 										<option value="${jogador.codigo}">${jogador.nome}</option>
@@ -54,13 +54,29 @@
 							</div>
 						</div>
 					</form>
+					<div class="col-sm-4 col-xs-4 col-md-4"></div>
 					<form class="form" role="form" action="ServletFifa" method="get">
 						<input type="hidden" name="fork" value="p-jog-2" />
-						<div class="col-sm-4 col-xs-4 col-md-4"></div>
 						<div class="col-sm-4 col-xs-4 col-md-4">
-							<p>Consultar desempenho dos jogadores</p>
+							<p>Para verificar o desempenho entre um jogador X e um jogador Y, escolha-os abaixo:</p>
 							<div class="form-group">
-								<input class="btn btn-primary" type="submit" value="Ir"
+								<label class="control-label" for="jog-2">Jogador X:</label> <select
+									class="form-control" id="jog-2" name="nm-jog-2" required>
+									<option value="">Selecione</option>
+									<c:forEach var="jogador" items="${listaOutros}">
+										<option value="${jogador.nome}">${jogador.nome}</option>
+									</c:forEach>
+								</select>
+								<h5 class="help-block">Escolha o jogador</h5>
+								<label class="control-label" for="jog-3">Jogador Y:</label> <select
+									class="form-control" id="jog-3" name="nm-jog-3" required>
+									<option value="">Selecione</option>
+									<c:forEach var="jogador" items="${listaOutros}">
+										<option value="${jogador.nome}">${jogador.nome}</option>
+									</c:forEach>
+								</select>
+								<h5 class="help-block">Escolha o jogador</h5>
+								<input class="btn btn-primary" type="submit" value="Pesquisar"
 									name="nm-enviar" />
 							</div>
 						</div>

@@ -149,8 +149,8 @@ public class ServletFifa extends HttpServlet {
 		String fork = request.getParameter("fork");
 		Connection con = null;
 		String usuario, senha;
-		usuario = "blablabla";
-		senha = "blablabla";
+		usuario = "BLABLA";
+		senha = "BLABLA";
 		try {
 			con = ConexaoFactory.controlarInstancia()
 					.getConexao(usuario, senha);
@@ -177,6 +177,9 @@ public class ServletFifa extends HttpServlet {
 				this.listarMedia(con, request, response);
 			}else if(fork.equals("p-jog-2")){
 				this.listarMediaPersonalizada(con, request, response);
+			}else if(fork.equals("cadastro")){
+				request.setAttribute("msg", "Página indisponível no momento! Em breve ela ficará disponível.");
+				request.getRequestDispatcher("falhas.jsp").forward(request, response);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

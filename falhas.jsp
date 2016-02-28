@@ -16,7 +16,7 @@
 	<!-- Menu -->
 		<c:import url="resources/imports/menu/menu.jsp"></c:import>
 	
-	<p class="text-danger">${MensagemFalha} ${Falha} ${MensagemSolucao}</p>
+	<h4 class="text-danger">${msg} ${MensagemFalha} ${Falha} ${MensagemSolucao}</h4>
 	</div>
 	<!-- End container -->
 
